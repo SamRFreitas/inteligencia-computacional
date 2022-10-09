@@ -1,0 +1,95 @@
+package main
+
+import "fmt"
+
+func main() {
+	// vetor := [6]int{2, 3, 5, 7, 11, 13}
+	vetor := [6]int{0, 3, 7, 9, 13, 5}
+	// vetor := [6]int{10, 3, 7, 9, 13, -1}
+	// vetor := [6]int{10, 3, 7, 9, -1, -1}
+
+	imprimeVetor(vetor)
+
+	iniciarVetor(vetor)
+	
+	fmt.Println(buscaLinear(vetor, 8))
+
+	removerNumero(vetor, 3)
+
+	inserirNumero(vetor, 11)
+
+	vetor3 := [6]int{10, 3, 7, 9, -1, -1}
+
+	inserirNumero(vetor3, 11)
+}
+
+func iniciarVetor(vetor [6]int) {
+	fmt.Println("Iniciar Vetor")
+	imprimeVetor(vetor)
+	for index, _ := range vetor {
+		vetor[index] = -1
+	}
+	imprimeVetor(vetor)
+	fmt.Println("------------------------------")
+}
+
+func imprimeVetor(vetor [6]int) {
+	fmt.Println(vetor)
+	fmt.Println()
+}
+
+func buscaLinear(vetor [6]int, numero int) int {
+	for index, num := range vetor {
+		if (num == numero) {
+			return index 
+		} 
+	}
+
+	return -1
+}
+
+func removerNumero(vetor [6]int, numero int) {
+	fmt.Printf("Remover número %d Vetor: ", numero)
+	imprimeVetor(vetor)
+
+	var resultadoBuscaLinear int = buscaLinear(vetor, numero)
+
+	if(resultadoBuscaLinear != -1){
+		vetor[resultadoBuscaLinear] = -1
+	} else {
+		fmt.Println("Número não existente no vetor")
+	}
+
+	imprimeVetor(vetor)
+	fmt.Println("------------------------------")
+	fmt.Println()
+}
+
+func inserirNumero(vetor [6]int, numero int) {
+	fmt.Printf("Inserir número %d no Vetor: ", numero)
+	imprimeVetor(vetor)
+
+	var temEspaco bool = false
+
+	if(buscaLinear(vetor, numero) == -1){
+
+		for index, num := range vetor {
+			if(num == -1) {
+				vetor[index] = numero
+				temEspaco = true
+				break
+			}
+		}
+
+	} else{
+		fmt.Println("Número já existente no vetor")
+	}
+
+	if (!temEspaco && buscaLinear(vetor, numero) == -1) {
+		fmt.Println("Vetor Sem Espaço")
+	}
+
+	imprimeVetor(vetor)
+	fmt.Println("------------------------------")
+	fmt.Println()
+}
