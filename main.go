@@ -1,16 +1,16 @@
 package main
 
 import (
-	"fmt"
+	"inteligencia-computacional-vetores/vetores"
 )
 
 func main() {
 	// vetor := [5]int{0, 0, 0, 0, 0}
 	// vetor := [5]int{2, 4, 0, 0, 0}
 	// vetor := [5]int{2, 3, 7, 9, 10}
-	// vetor := [5]int{5, 0, 0, 0, 0}
+	vetor := [5]int{5, 0, 0, 0, 0}
 
-	// exibeVetor(vetor)
+	vetores.ExibeVetor(vetor)
 
 	// fmt.Println(buscaInserir(vetor, 2))
 
@@ -35,5 +35,5 @@ func main() {
 
 	// vetor = inserir(vetor, 1)
 
-	fmt.Println("Hello")
+	// fmt.Println("Hello")
 }
